@@ -1,0 +1,9 @@
+---
+
+- name: Configure uswgi graphite-api app
+  template: src=uwsgi-graphite-api.ini.j2 dest={{uwsgi_apps_available}}/graphite-api.ini
+  notify: [uwsgi reload]
+
+- name: Enable uwsgi graphite-api app
+  file: src={{uwsgi_apps_available}}/graphite-api.ini dest={{uwsgi_apps_enabled}}/graphite-api.ini state=link
+  notify: [uwsgi reload]

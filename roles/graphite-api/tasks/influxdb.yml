@@ -1,0 +1,9 @@
+---
+
+- name: Install influxdb
+  pip: name={{item}} executable={{graphite_api_dir}}/env/bin/pip
+  sudo: yes
+  sudo_user: "{{graphite_api_user}}"
+  with_items:
+  - influxdb
+  - graphite-influxdb

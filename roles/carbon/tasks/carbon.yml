@@ -1,0 +1,22 @@
+---
+
+- name: Install carbon
+  apt: pkg=graphite-carbon update_cache=yes cache_valid_time=60
+
+- name: Enable carbon
+  template: src=graphite-carbon.j2 dest=/etc/default/graphite-carbon
+
+- name: Configure carbon
+  template: src=carbon.conf.j2 dest={{carbon_dir}}/carbon.conf
+  notify:
+  - carbon restart
+
+- name: Configure carbon storage schemas
+  template: src=storage-schemas.conf.j2 dest={{carbon_dir}}/storage-schemas.conf
+  notify:
+  - carbon restart
+
+- name: Configure carbon storage aggregation
+  template: src=storage-aggregation.conf.j2 dest={{carbon_dir}}/storage-aggregation.conf
+  notify:
+  - carbon restart

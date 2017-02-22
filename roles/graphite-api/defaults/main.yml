@@ -1,0 +1,29 @@
+---
+
+graphite_api_enabled: no
+graphite_api_dir: /opt/graphite
+graphite_api_user: graphite
+graphite_api_group: "{{graphite_api_user}}"
+graphite_api_timezone: UTC
+graphite_api_search_index: "{{graphite_api_dir}}/index"
+
+graphite_api_nginx: no
+graphite_api_nginx_host: "{{inventory_hostname}}"
+graphite_api_nginx_port: 80
+graphite_api_nginx_allow_origin: '$http_origin'
+
+graphite_api_uwsgi: no
+graphite_api_uwsgi_host: "{{inventory_hostname}}"
+graphite_api_uwsgi_port: 8080
+
+graphite_api_influxdb: no
+graphite_api_influxdb_host: "{{inventory_hostname}}"
+graphite_api_influxdb_port: 8086
+graphite_api_influxdb_user: metrics
+graphite_api_influxdb_pass: metrics
+graphite_api_influxdb_db: metrics
+
+graphite_api_whisper: no
+graphite_api_whisper_directory: "{{graphite_api_dir}}/storage/whisper"
+graphite_api_whisper_directories:
+- "{{graphite_api_whisper_directory}}"

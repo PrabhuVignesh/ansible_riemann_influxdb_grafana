@@ -1,0 +1,19 @@
+---
+
+carbon_enabled: no
+carbon_dir: /etc/carbon
+carbon_log_dir: /var/log/carbon
+carbon_max_updates_per_second: 10000
+carbon_max_creates_per_second: 1000
+
+carbon_udp_enabled: false
+carbon_udp_bind_addr: 0.0.0.0
+carbon_udp_port: 2003
+
+carbon_storage_schemas:
+- name: carbon
+  pattern: ^carbon\..*
+  retentions: "60s:90d"
+- name: default_1min_for_1day
+  pattern: ".*"
+  retentions: "1m:1d,10m:7d"
